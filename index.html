@@ -5,39 +5,56 @@
     <meta charset="utf-8">
     <title>Project 3</title>
 
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
 
-    <header>
+    <header class="container">
         <img src="assets/images/instagrid-logo.svg" class="headerLogo" alt="instagrid logo">
-
 
     </header>
 
 
 
+    <section class="searchSection">
+
+        <img src="assets/images/instagrid-icon.svg" class="searchLogo" alt="instagrid icon">
+
+        <div class="instagram-searcher">
+
+            <form action="#" id="image-search">
+                <div class="hashtag-search">
+                    <input type="text" name="hashtag-name" class="searchBar" id="hashtag-name" placeholder="Enter your search ..." />
+                    <button type="submit">
+                        <i class="fa fa-search fa-1.5x"></i>
+                    </button>
+                </div>
+            </form>
 
 
-    <div class="instagram-searcher">
-        <form action="#" id="image-search">
-            <div class="hashtag-search">
-                <input type="text" name="hashtag-name" id="hashtag-name" placeholder="Enter your search ..." />
-                <input type="submit" value="Search" />
-            </div>
-        </form>
+        </div>
+    </section>
 
-        <ul class="image-list"></ul>
+    <section class="image-area container">
 
-    </div>
+        <div class="imageListWrapper">
+            <img src="assets/images/search-tags.svg" alt="search #tag to view images in the grid">
+        </div>
 
+        <div class="loading_gif"></div>
 
+        <div class="load_more_btn"></div>
 
+    </section>
 
-    <footer>
+    <footer class="container">
+
+        <p class="copyright">&copy;Copyright 2015 <span>Instagrid</span></p>
+
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="js/lightbox.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
     </footer>
 
