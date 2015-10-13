@@ -27,8 +27,8 @@ $(function () {
                     i++;
 
                     var listItems = '';
-                    listItems += "<li><img src=\'";
-                    listItems += value.images.standard_resolution.url + "\' class='content_image'>";
+                    listItems += "<li><a href='" + value.images.standard_resolution.url + "' data-lightbox='image-" + i + "'><img src=\'";
+                    listItems += value.images.standard_resolution.url + "\' class='content_image'></a>";
                     listItems += "<div class='pic_footer'>" + "<img src=\'" + value.user.profile_picture + "\' class='profile_picture'>";
                     listItems += "<div class='pic_info'><span class='user_name'>" + value.user.username + "</span>";
                     listItems += "<div class='comment_likes'>";
@@ -84,10 +84,6 @@ $(function () {
         imgagePopulator(pagination_link);
     });
 
-
-
-
-9
 
 
 
