@@ -13,7 +13,6 @@ img, video {
   height: auto;
 }
 
-// Create container
 .container {
   margin: 0 auto;
 
@@ -117,121 +116,116 @@ header {
     margin: 5% auto;
   }
 
-  //
-  .imageListWrapper {
 
-    // Spacing, add border, space between content and border
-    .image-list {
-      margin: 2% auto;
-      padding: 1.5% 0;
+  // Spacing, add border, space between content and border
+  .image-list {
+    margin: 2% auto;
+    padding: 1.5% 0;
+    width: 95%;
+    border: solid $gridBorder 1px;
+
+    // Set flex + wrap and border width for tablet/desktop
+    @include bp(tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      border-width: 4px;
+    }
+
+    // Individual content block border/border space and margin space
+    li {
+      border: 2px solid $pictureBorder;
       width: 95%;
-      border: solid $gridBorder 1px;
+      margin: 1.2rem auto;
 
-      // Set flex + wrap and border width for tablet/desktop
+      // Shrink to fit 3 pictures across
       @include bp(tablet) {
-        display: flex;
-        flex-wrap: wrap;
-        border-width: 4px;
+        width: 30%;
       }
 
-      // Individual content block border/border space and margin space
-      li {
-        border: 2px solid $pictureBorder;
-        width: 95%;
-        margin: 1.2rem auto;
+      // Shrink to fir 4 pictures across
+      @include bp(desktop) {
+        width: 22%;
+      }
 
-        // Shrink to fit 3 pictures across
-        @include bp(tablet) {
-          width: 30%;
+      // Content image size fixing, add border between pic footer
+      .content_image {
+        width: 100%;
+        border-bottom: 1px solid $pictureBorder;
+        min-height: 165px;
+        background: url("../assets/images/ajax-loader.gif") no-repeat center center;
+        background-size: 50px;
+
+      }
+
+
+      // Set flex, spacing
+      .pic_footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3% 0;
+
+        // Set profile picture size and make circular
+        .profile_picture {
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          margin-left: 4%;
+
+          // Reduce size of profile picture
+          @include bp(tablet) {
+            width: 55px;
+            height: 55px;
+            padding: 2%;
+          }
         }
 
-        // Shrink to fir 4 pictures across
-        @include bp(desktop) {
-          width: 22%;
-        }
-
-        // Content image size fixing, add border between pic footer
-        .content_image {
-          width: 100%;
-          //display: block;
-          //margin: 0 auto;
-          border-bottom: 1px solid $pictureBorder;
-        }
-
-
-        // Set flex, spacing
-        .pic_footer {
+        // Bold font, set flex and flex properties, align right, spacing
+        .pic_info {
+          font-weight: bold;
           display: flex;
-          //width: 99.35%;
-          //margin: 0 auto;
-          justify-content: space-between;
-          align-items: center;
-          padding: 3% 0;
+          flex-direction: column;
+          text-align: right;
+          margin-right: 4%;
+          //overflow: hidden;
+          min-width: 65px;
 
-          // Set profile picture size and make circular
-          .profile_picture {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            margin-left: 4%;
+          // Font size, set overflow for long names, remove link decoration
+          .user_name {
+            font-size: 2.2rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 3rem;
+            text-decoration: none;
+            color: black;
 
-            // Reduce size of profile picture
+            // Lower font size, line spacing
             @include bp(tablet) {
-              width: 55px;
-              height: 55px;
-              padding: 2%;
+              font-size: 1.6rem;
+              line-height: 2rem;
             }
           }
 
-          // Bold font, set flex and flex properties, align right, spacing
-          .pic_info {
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            text-align: right;
-            margin-right: 4%;
-            //overflow: hidden;
-            min-width: 65px;
+          // Add custom link decoration
+          .user_name:hover {
+            text-shadow: 0 0 1px blue;
+          }
 
-            // Font size, set overflow for long names, remove link decoration
-            .user_name {
-              font-size: 2.2rem;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              line-height: 3rem;
-              text-decoration: none;
-              color: black;
+          // Font size, spacing
+          .comment_likes {
+            font-size: 2.2rem;
+            margin-top: 3%;
 
-              // Lower font size, line spacing
-              @include bp(tablet) {
-                font-size: 1.6rem;
-                //overflow: hidden;
-                //text-overflow: ellipsis;
-                line-height: 2rem;
-              }
+            // Lower font size
+            @include bp(tablet) {
+              font-size: 1.6rem;
             }
 
-            // Add custom link decoration
-            .user_name:hover {
-              text-shadow: 0 0 1px blue;
+            // Spacing between comments and links
+            .comments {
+              margin-right: 7%;
             }
 
-            // Font size, spacing
-            .comment_likes {
-              font-size: 2.2rem;
-              margin-top: 3%;
-
-              // Lower font size
-              @include bp(tablet) {
-                font-size: 1.6rem;
-              }
-
-              // Spacing between comments and links
-              .comments {
-                margin-right: 7%;
-              }
-
-            }
           }
         }
       }

@@ -156,13 +156,13 @@ header {
     height: 50px;
     width: 50px;
     margin: 5% auto; }
-  .image-area .imageListWrapper .image-list {
+  .image-area .image-list {
     margin: 2% auto;
     padding: 1.5% 0;
     width: 95%;
     border: solid #c2c2c2 1px; }
     @media (min-width: 600px) {
-      .image-area .imageListWrapper .image-list {
+      .image-area .image-list {
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
@@ -170,20 +170,23 @@ header {
             -ms-flex-wrap: wrap;
                 flex-wrap: wrap;
         border-width: 4px; } }
-    .image-area .imageListWrapper .image-list li {
+    .image-area .image-list li {
       border: 2px solid #dbdbdb;
       width: 95%;
       margin: 1.2rem auto; }
       @media (min-width: 600px) {
-        .image-area .imageListWrapper .image-list li {
+        .image-area .image-list li {
           width: 30%; } }
       @media (min-width: 1000px) {
-        .image-area .imageListWrapper .image-list li {
+        .image-area .image-list li {
           width: 22%; } }
-      .image-area .imageListWrapper .image-list li .content_image {
+      .image-area .image-list li .content_image {
         width: 100%;
-        border-bottom: 1px solid #dbdbdb; }
-      .image-area .imageListWrapper .image-list li .pic_footer {
+        border-bottom: 1px solid #dbdbdb;
+        min-height: 165px;
+        background: url("../assets/images/ajax-loader.gif") no-repeat center center;
+        background-size: 50px; }
+      .image-area .image-list li .pic_footer {
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
@@ -194,17 +197,17 @@ header {
             -ms-flex-align: center;
                 align-items: center;
         padding: 3% 0; }
-        .image-area .imageListWrapper .image-list li .pic_footer .profile_picture {
+        .image-area .image-list li .pic_footer .profile_picture {
           width: 75px;
           height: 75px;
           border-radius: 50%;
           margin-left: 4%; }
           @media (min-width: 600px) {
-            .image-area .imageListWrapper .image-list li .pic_footer .profile_picture {
+            .image-area .image-list li .pic_footer .profile_picture {
               width: 55px;
               height: 55px;
               padding: 2%; } }
-        .image-area .imageListWrapper .image-list li .pic_footer .pic_info {
+        .image-area .image-list li .pic_footer .pic_info {
           font-weight: bold;
           display: -webkit-flex;
           display: -ms-flexbox;
@@ -215,7 +218,7 @@ header {
           text-align: right;
           margin-right: 4%;
           min-width: 65px; }
-          .image-area .imageListWrapper .image-list li .pic_footer .pic_info .user_name {
+          .image-area .image-list li .pic_footer .pic_info .user_name {
             font-size: 2.2rem;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -223,18 +226,18 @@ header {
             text-decoration: none;
             color: black; }
             @media (min-width: 600px) {
-              .image-area .imageListWrapper .image-list li .pic_footer .pic_info .user_name {
+              .image-area .image-list li .pic_footer .pic_info .user_name {
                 font-size: 1.6rem;
                 line-height: 2rem; } }
-          .image-area .imageListWrapper .image-list li .pic_footer .pic_info .user_name:hover {
+          .image-area .image-list li .pic_footer .pic_info .user_name:hover {
             text-shadow: 0 0 1px blue; }
-          .image-area .imageListWrapper .image-list li .pic_footer .pic_info .comment_likes {
+          .image-area .image-list li .pic_footer .pic_info .comment_likes {
             font-size: 2.2rem;
             margin-top: 3%; }
             @media (min-width: 600px) {
-              .image-area .imageListWrapper .image-list li .pic_footer .pic_info .comment_likes {
+              .image-area .image-list li .pic_footer .pic_info .comment_likes {
                 font-size: 1.6rem; } }
-            .image-area .imageListWrapper .image-list li .pic_footer .pic_info .comment_likes .comments {
+            .image-area .image-list li .pic_footer .pic_info .comment_likes .comments {
               margin-right: 7%; }
 
 .load_more {
