@@ -7,34 +7,34 @@
 
 
 
-
+// Media fix
 img, video {
   max-width: 100%;
   height: auto;
 }
 
-
+// Create container
 .container {
-  max-width: 600px;
   margin: 0 auto;
 
-  @include bp(tablet) {
+  @include bp(desktop) {
     max-width: 1000px;
   }
 
 }
 
+// Set base font size and color
 html {
   font-size: 12px;
   color: $baseFontColor;
 }
 
-
+// Set base font
 body {
   font-family: $fontStack;
 }
 
-
+// Align mobile header center, tablet/desktop left
 header {
   text-align: center;
   
@@ -42,30 +42,35 @@ header {
     text-align: left;
   }
 
+  // Logo sizing
   .headerLogo {
     width: 30%;
     margin: 2%;
   }
 }
 
+// Align center and add background
 .searchSection {
   text-align: center;
   background: url(../assets/images/pattern.png) no-repeat center center;
   background-size: cover;
   padding: 3.5% 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
+  // Increase height for tablet
   @include bp(tablet) {
     height: 250px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
   }
 
+  // Increase height more for desktop
   @include bp(desktop) {
     height: 350px;
   }
 
+  // Logo sizing
   .searchLogo {
     width: 14%;
     margin-bottom: 4%;
@@ -73,11 +78,13 @@ header {
     max-width: 130px;
   }
 
+  // Form styling, width, center, set flex
   .hashtag-search {
     width: 240px;
     margin: 0 auto;
     display: flex;
 
+    // Remove border, set color, flex styling
     input {
       border: none;
       color: $searchColor;
@@ -86,6 +93,7 @@ header {
       padding: 3%;
     }
 
+    // Remove border, bg color white, icon color grey, icon size
     button {
       border: none;
       background-color: white;
@@ -96,10 +104,11 @@ header {
   }
 }
 
-
+// Center load more button
 .image-area {
   text-align: center;
 
+  // Create loading gif in empty div
   .loading_gif {
     background: url("../assets/images/ajax-loader.gif") no-repeat center center;
     background-size: cover;
@@ -108,114 +117,132 @@ header {
     margin: 5% auto;
   }
 
+  //
+  .imageListWrapper {
 
-
+    // Spacing, add border, space between content and border
     .image-list {
-
       margin: 2% auto;
       padding: 1.5% 0;
       width: 95%;
       border: solid $gridBorder 1px;
 
+      // Set flex + wrap and border width for tablet/desktop
       @include bp(tablet) {
         display: flex;
         flex-wrap: wrap;
         border-width: 4px;
       }
 
+      // Individual content block border/border space and margin space
       li {
-
         border: 2px solid $pictureBorder;
         width: 95%;
         margin: 1.2rem auto;
 
+        // Shrink to fit 3 pictures across
         @include bp(tablet) {
           width: 30%;
         }
 
+        // Shrink to fir 4 pictures across
         @include bp(desktop) {
           width: 22%;
         }
 
+        // Content image size fixing, add border between pic footer
         .content_image {
           width: 100%;
-          display: block;
-          margin: 0 auto;
+          //display: block;
+          //margin: 0 auto;
           border-bottom: 1px solid $pictureBorder;
-
         }
 
+
+        // Set flex, spacing
         .pic_footer {
           display: flex;
-          width: 99.35%;
-          margin: 0 auto;
+          //width: 99.35%;
+          //margin: 0 auto;
           justify-content: space-between;
           align-items: center;
           padding: 3% 0;
 
+          // Set profile picture size and make circular
           .profile_picture {
             width: 75px;
             height: 75px;
             border-radius: 50%;
             margin-left: 4%;
 
+            // Reduce size of profile picture
             @include bp(tablet) {
               width: 55px;
               height: 55px;
               padding: 2%;
             }
-
           }
 
+          // Bold font, set flex and flex properties, align right, spacing
           .pic_info {
-
             font-weight: bold;
             display: flex;
             flex-direction: column;
             text-align: right;
             margin-right: 4%;
-            overflow: hidden;
+            //overflow: hidden;
             min-width: 65px;
 
-
+            // Font size, set overflow for long names, remove link decoration
             .user_name {
               font-size: 2.2rem;
               overflow: hidden;
               text-overflow: ellipsis;
               line-height: 3rem;
+              text-decoration: none;
+              color: black;
 
+              // Lower font size, line spacing
               @include bp(tablet) {
                 font-size: 1.6rem;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                //overflow: hidden;
+                //text-overflow: ellipsis;
                 line-height: 2rem;
               }
             }
 
+            // Add custom link decoration
+            .user_name:hover {
+              text-shadow: 0 0 1px blue;
+            }
+
+            // Font size, spacing
             .comment_likes {
               font-size: 2.2rem;
               margin-top: 3%;
 
+              // Lower font size
               @include bp(tablet) {
                 font-size: 1.6rem;
               }
 
+              // Spacing between comments and links
               .comments {
                 margin-right: 7%;
               }
 
             }
-
           }
         }
       }
     }
   }
+}
 
 
 
 
-
+// Load more button styling
 .load_more {
   background-color: red;
   color: white;
@@ -226,16 +253,18 @@ header {
   margin: 4%;
 }
 
-
+// Footer sizing, centering, add top border
 footer {
   margin: 0 auto;
-  width: 70%;
+  width: 95%;
   border-top: solid $gridBorder 1px;
 
+  // Center copyright text, spacing
   .copyright {
     text-align: center;
     padding: 3%;
 
+    // Uppercase "COPYRIGHT"
     span {
       text-transform: uppercase;
     }

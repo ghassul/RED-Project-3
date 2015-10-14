@@ -1,51 +1,54 @@
 $(function () {
 
+    //Declare variables
     var pagination_link = '';
     var $imageList = $('<ul class="image-list"></ul>');
     var i = 0;
 
-    $('.loading_gif').toggle(false);
+    $('.loading_gif').toggle(false); //Hide loading gif
 
+    //Populates image section, takes input of a URL
+    function imagePopulator(imgInput) {
 
-    function imgagePopulator(imgInput) {
-
-
-//<a href="images/image-1.jpg" data-lightbox="image-1" data-title="My caption">Image #1</a>
 
         $.ajax({
                 method: 'GET',
                 dataType: 'jsonp',
-                url: imgInput
+                url: imgInput //Inputted URL
             })
 
             .done(function (data) {
-                console.log(data);
 
-                pagination_link = (data.pagination.next_url);
+                pagination_link = (data.pagination.next_url); //Grab pagination link for load more button
 
                 $.each(data.data, function (key, value) {
-                    i++;
+                    i++; //Iterator for lightbox data
 
-                    var listItems = '';
-                    listItems += "<li><a href='" + value.images.standard_resolution.url + "' data-lightbox='image-" + i + "'><img src=\'";
-                    listItems += value.images.standard_resolution.url + "\' class='content_image'></a>";
-                    listItems += "<div class='pic_footer'>" + "<img src=\'" + value.user.profile_picture + "\' class='profile_picture'>";
-                    listItems += "<div class='pic_info'><span class='user_name'>" + value.user.username + "</span>";
-                    listItems += "<div class='comment_likes'>";
-                    listItems += "<span class='comments'><i class='fa fa-comments'></i>" + value.comments.count + "</span>";
-                    listItems += "<span><i class='fa fa-heart'></i>" + value.likes.count + "</span></div></div>";
+                    //Declare image and username variables to make slightly more readable
+                    var contentImage = value.images.standard_resolution.url;
+                    var userName = value.user.username;
 
-                    listItems += "</div></li>";
+                    var listItems = ''; //Declare empty string
+                    listItems += "<li><a href='" + contentImage + "' data-lightbox='image-" + i + "'><img src=\'"; // <li><a (lightbox data)><img>
+                    listItems += contentImage + "\' class='content_image'></a>"; // (ImageURL)</a>
+                    listItems += "<div class='pic_footer'>"; // <div (picFooter)>
+                    listItems += "<img src=\'" + value.user.profile_picture + "\' class='profile_picture'>"; // <img (ProfilePicURL)/>
+                    listItems += "<div class='pic_info'>"; // <div (picInfo)>
+                    listItems += "<a href='https://instagram.com/" + userName + "' class='user_name'>" + userName + "</a>"; // <a (link to user)> userName </a>
+                    listItems += "<div class='comment_likes'>"; // <div (commentLikes)>
+                    listItems += "<span class='comments'><i class='fa fa-comments'></i>" + value.comments.count + "</span>"; // <span><i (comments icon)></i> (# of comments) </span>
+                    listItems += "<span><i class='fa fa-heart'></i>" + value.likes.count + "</span>"; // <span><i (likes icon)></i> (# of likes) </span>
+                    listItems += "</div></div></div></li>"; // </div (commentLikes)></div (picInfo)></div (picFooter)></li>
 
 
-                    $imageList.append(listItems);
+                    $imageList.append(listItems); // Append all above HTML to global .image-list variable
 
 
                 });
 
-                $('.imageListWrapper').append($imageList);
-                $('.loading_gif').toggle(false);
-                $('.load_more_btn').append("<button type=submit class='load_more'>Load more</button>");
+                $('.imageListWrapper').append($imageList); // Append .image-list (<ul>) to page
+                $('.loading_gif').toggle(false); // Hide loading gif
+                $('.load_more_btn').append("<button type=submit class='load_more'>Load more</button>"); // Create load more button
 
 
             });
@@ -56,32 +59,32 @@ $(function () {
 
 
 
-
+    // Search bar/button
     $('.instagram-searcher').on('submit', function(event) {
         event.preventDefault();
-        $('.imageListWrapper').empty();
-        $('.load_more_btn').empty();
-        $('.loading_gif').toggle(true);
-        $imageList.empty();
+        $('.imageListWrapper').empty(); // Delete all searched content
+        $('.load_more_btn').empty(); // Remove load more button
+        $('.loading_gif').toggle(true); // Show loading gif
+        $imageList.empty(); // Clear <ul> variable
 
-        var formInput = $('input').val();
-        var searchInput = "https://api.instagram.com/v1/tags/" + formInput
+        var formInput = $('input').val(); // Grab search bar input
+        var searchInput = "https://api.instagram.com/v1/tags/" + formInput // Construct API url
             + "/media/recent?count=12&client_id=e7c23d1d42974762a329e5dfc09ff86f";
 
-        imgagePopulator(searchInput);
-
-            });
+        imagePopulator(searchInput); // Run imagePopulator function passing in searched value
 
 
+    });
 
 
+
+    // Load more button
     $('.load_more_btn').on('click', function(event) {
         event.preventDefault();
-        $('.load_more_btn').empty();
-        $('.loading_gif').toggle(true);
-        console.log(pagination_link);
+        $('.load_more_btn').empty(); // Remove load more button
+        $('.loading_gif').toggle(true); // Show loading gif
 
-        imgagePopulator(pagination_link);
+        imagePopulator(pagination_link); // Run imagePopulator function passing in pagination link
     });
 
 
