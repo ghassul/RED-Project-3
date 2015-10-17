@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/main.css">
 
 </head>
-<body>
+<body ng-app="project3" ng-controller="InstaCtrl">
 
     <header class="container">
 
@@ -29,8 +29,8 @@
             <form action="#" id="image-search">
                 <div class="hashtag-search">
 
-                    <input type="text" name="hashtag-name" class="searchBar" id="hashtag-name" placeholder="Enter your search ..." />
-                    <button type="submit">
+                    <input ng-model="hashtag" type="text" name="hashtag-name" class="searchBar" id="hashtag-name" placeholder="Enter your search ..." />
+                    <button type="button" ng-click="getPhotos($event)">
                         <i class="fa fa-search fa-1.5x"></i>
                     </button>
 
@@ -45,14 +45,34 @@
 
         <!-- Nearly empty div for content to be appended to -->
         <div class="imageListWrapper">
-            <img src="assets/images/search-tags.svg" alt="search #tag to view images in the grid">
+            <img src="assets/images/search-tags.svg" alt="search #tag to view images in the grid" ng-hide="posts.length">
+            <ul class="image-list">
+                <li ng-repeat="post in posts" ng-show="posts.length">
+
+                    <a href={{post.images.standard_resolution.url}} data-lightbox='{{"image-" + $index}}'>
+                        <img src={{post.images.standard_resolution.url}} class='content_image'>
+                    </a>
+
+                    <div class='pic_footer'>
+
+                        <img src='{{post.user.profile_picture}}' class='profile_picture'>
+                        <div class='pic_info'>
+                            <a href='https://instagram.com/{{post.user.username}}' class='user_name'>{{post.user.username}}</a>
+                            <div class='comment_likes'>
+                                <span class='comments'><i class='fa fa-comments'></i>{{post.comments.count}}</span>
+                                <span><i class='fa fa-heart'></i>{{post.likes.count}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
 
         <!-- Empty div for loading gif -->
-        <div class="loading_gif"></div>
+        <div class="loading_gif" ng-show="loading"></div>
 
         <!-- Empty div for load more button -->
-        <div class="load_more_btn"></div>
+        <div class="load_more_btn" ng-hide="loading"></div>
 
     </section>
 
@@ -60,6 +80,7 @@
 
         <p class="copyright">&copy;Copyright 2015 <span>Instagrid</span></p>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="plugins/lightbox2-master/dist/js/lightbox.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
