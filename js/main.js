@@ -5,6 +5,7 @@
 
     app.controller("InstaCtrl", ['$scope', '$http', function($scope, $http){
 
+
         $scope.loading = false;
         $scope.posts = [];
         $scope.getPhotos = function(e){

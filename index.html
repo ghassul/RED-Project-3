@@ -26,11 +26,11 @@
 
         <div class="instagram-searcher">
 
-            <form action="#" id="image-search">
+            <form ng-submit="getPhotos($event)" action="#" id="image-search">
                 <div class="hashtag-search">
 
                     <input ng-model="hashtag" type="text" name="hashtag-name" class="searchBar" id="hashtag-name" placeholder="Enter your search ..." />
-                    <button type="button" ng-click="getPhotos($event)">
+                    <button type="submit">
                         <i class="fa fa-search fa-1.5x"></i>
                     </button>
 
@@ -50,12 +50,13 @@
                 <li ng-repeat="post in posts" ng-show="posts.length">
 
                     <a href={{post.images.standard_resolution.url}} data-lightbox='{{"image-" + $index}}'>
-                        <img src={{post.images.standard_resolution.url}} class='content_image'>
+                        <img ng-src="{{post.images.standard_resolution.url}}" class='content_image'>
                     </a>
 
                     <div class='pic_footer'>
 
-                        <img src='{{post.user.profile_picture}}' class='profile_picture'>
+                        <img ng-src='{{post.user.profile_picture}}' class='profile_picture'>
+
                         <div class='pic_info'>
                             <a href='https://instagram.com/{{post.user.username}}' class='user_name'>{{post.user.username}}</a>
                             <div class='comment_likes'>
@@ -63,6 +64,7 @@
                                 <span><i class='fa fa-heart'></i>{{post.likes.count}}</span>
                             </div>
                         </div>
+
                     </div>
                 </li>
             </ul>
