@@ -3,10 +3,6 @@
 @import "variables";
 @import "mixins";
 
-
-
-
-
 // Media fix
 img, video {
   max-width: 100%;
@@ -19,7 +15,6 @@ img, video {
   @include bp(desktop) {
     max-width: 1000px;
   }
-
 }
 
 // Set base font size and color
@@ -116,7 +111,6 @@ header {
     margin: 5% auto;
   }
 
-
   // Spacing, add border, space between content and border
   .image-list {
     margin: 2% auto;
@@ -154,9 +148,7 @@ header {
         min-height: 165px;
         background: url("../assets/images/ajax-loader.gif") no-repeat center center;
         background-size: 50px;
-
       }
-
 
       // Set flex, spacing
       .pic_footer {
@@ -225,16 +217,12 @@ header {
             .comments {
               margin-right: 7%;
             }
-
           }
         }
       }
     }
   }
 }
-
-
-
 
 // Load more button styling
 .load_more {
@@ -262,6 +250,5 @@ footer {
     span {
       text-transform: uppercase;
     }
-
   }
 }

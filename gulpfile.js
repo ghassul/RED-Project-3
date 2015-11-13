@@ -5,8 +5,14 @@ var gulp = require('gulp'); // Load Gulp!
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
+var babel = require("gulp-babel");
 
 
+gulp.task("babel", function () {
+    return gulp.src("js/main.js")
+        .pipe(babel())
+        .pipe(gulp.dest("./build/js"));
+});
 
 gulp.task('scss', function() {
     gulp.src('./scss/main.scss')
@@ -14,15 +20,8 @@ gulp.task('scss', function() {
         .pipe(autoprefixer({
             browsers: ['last 2 versions']
         }))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./build/css'));
 });
-
-
-//gulp.task('scss', function () {
-//    gulp.src('./scss/**/*.scss')
-//        .pipe(sass().on('error', sass.logError))
-//        .pipe(gulp.dest('./css'));
-//});
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -32,13 +31,10 @@ gulp.task('browser-sync', function() {
     });
 
     gulp.watch('./scss/**/*.scss', ['scss']);
+    gulp.watch('./js/**/*.js', ['babel']);
     gulp.watch(["index.html", "js/*.js", "css/*.css"]).on('change', browserSync.reload);
 });
 
-
-
-
-'use strict';
 
 
 

@@ -10,7 +10,6 @@ $(function () {
     //Populates image section, takes input of a URL
     function imagePopulator(imgInput) {
 
-
         $.ajax({
                 method: 'GET',
                 dataType: 'jsonp',
@@ -40,24 +39,14 @@ $(function () {
                     listItems += "<span><i class='fa fa-heart'></i>" + value.likes.count + "</span>"; // <span><i (likes icon)></i> (# of likes) </span>
                     listItems += "</div></div></div></li>"; // </div (commentLikes)></div (picInfo)></div (picFooter)></li>
 
-
                     $imageList.append(listItems); // Append all above HTML to global .image-list variable
-
-
                 });
 
                 $('.imageListWrapper').append($imageList); // Append .image-list (<ul>) to page
                 $('.loading_gif').toggle(false); // Hide loading gif
                 $('.load_more_btn').append("<button type=submit class='load_more'>Load more</button>"); // Create load more button
-
-
             });
-
-
     }
-
-
-
 
     // Search bar/button
     $('.instagram-searcher').on('submit', function(event) {
@@ -72,11 +61,7 @@ $(function () {
             + "/media/recent?count=12&client_id=e7c23d1d42974762a329e5dfc09ff86f";
 
         imagePopulator(searchInput); // Run imagePopulator function passing in searched value
-
-
     });
-
-
 
     // Load more button
     $('.load_more_btn').on('click', function(event) {
@@ -86,8 +71,4 @@ $(function () {
 
         imagePopulator(pagination_link); // Run imagePopulator function passing in pagination link
     });
-
-
-
-
 });

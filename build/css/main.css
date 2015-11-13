@@ -47,29 +47,29 @@ table {
 
 @font-face {
   font-family: 'open_sans';
-  src: url("../assets/fonts/opensans-bold-webfont.eot");
-  src: url("../assets/fonts/opensans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/opensans-bold-webfont.woff2") format("woff2"), url("../assets/fonts/opensans-bold-webfont.woff") format("woff"), url("../assets/fonts/opensans-bold-webfont.ttf") format("truetype"), url("../assets/fonts/opensans-bold-webfont.svg#open_sansbold") format("svg");
+  src: url("../../assets/fonts/opensans-bold-webfont.eot");
+  src: url("../../assets/fonts/opensans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/opensans-bold-webfont.woff2") format("woff2"), url("../../assets/fonts/opensans-bold-webfont.woff") format("woff"), url("../../assets/fonts/opensans-bold-webfont.ttf") format("truetype"), url("../../assets/fonts/opensans-bold-webfont.svg#open_sansbold") format("svg");
   font-weight: bold;
   font-style: normal; }
 
 @font-face {
   font-family: 'open_sans';
-  src: url("../assets/fonts/opensans-bolditalic-webfont.eot");
-  src: url("../assets/fonts/opensans-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/opensans-bolditalic-webfont.woff2") format("woff2"), url("../assets/fonts/opensans-bolditalic-webfont.woff") format("woff"), url("../assets/fonts/opensans-bolditalic-webfont.ttf") format("truetype"), url("../assets/fonts/opensans-bolditalic-webfont.svg#open_sansbold_italic") format("svg");
+  src: url("../../assets/fonts/opensans-bolditalic-webfont.eot");
+  src: url("../../assets/fonts/opensans-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/opensans-bolditalic-webfont.woff2") format("woff2"), url("../../assets/fonts/opensans-bolditalic-webfont.woff") format("woff"), url("../../assets/fonts/opensans-bolditalic-webfont.ttf") format("truetype"), url("../../assets/fonts/opensans-bolditalic-webfont.svg#open_sansbold_italic") format("svg");
   font-weight: bold;
   font-style: italic; }
 
 @font-face {
   font-family: 'open_sans';
-  src: url("../assets/fonts/opensans-light-webfont.eot");
-  src: url("../assets/fonts/opensans-light-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/opensans-light-webfont.woff2") format("woff2"), url("../assets/fonts/opensans-light-webfont.woff") format("woff"), url("../assets/fonts/opensans-light-webfont.ttf") format("truetype"), url("../assets/fonts/opensans-light-webfont.svg#open_sanslight") format("svg");
+  src: url("../../assets/fonts/opensans-light-webfont.eot");
+  src: url("../../assets/fonts/opensans-light-webfont.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/opensans-light-webfont.woff2") format("woff2"), url("../../assets/fonts/opensans-light-webfont.woff") format("woff"), url("../../assets/fonts/opensans-light-webfont.ttf") format("truetype"), url("../../assets/fonts/opensans-light-webfont.svg#open_sanslight") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'open_sans';
-  src: url("../assets/fonts/opensans-lightitalic-webfont.eot");
-  src: url("../assets/fonts/opensans-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/opensans-lightitalic-webfont.woff2") format("woff2"), url("../assets/fonts/opensans-lightitalic-webfont.woff") format("woff"), url("../assets/fonts/opensans-lightitalic-webfont.ttf") format("truetype"), url("../assets/fonts/opensans-lightitalic-webfont.svg#open_sanslight_italic") format("svg");
+  src: url("../../assets/fonts/opensans-lightitalic-webfont.eot");
+  src: url("../../assets/fonts/opensans-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/opensans-lightitalic-webfont.woff2") format("woff2"), url("../../assets/fonts/opensans-lightitalic-webfont.woff") format("woff"), url("../../assets/fonts/opensans-lightitalic-webfont.ttf") format("truetype"), url("../../assets/fonts/opensans-lightitalic-webfont.svg#open_sanslight_italic") format("svg");
   font-weight: normal;
   font-style: italic; }
 
@@ -101,7 +101,7 @@ header {
 
 .searchSection {
   text-align: center;
-  background: url(../assets/images/pattern.png) no-repeat center center;
+  background: url(../../assets/images/pattern.png) no-repeat center center;
   background-size: cover;
   padding: 3.5% 0;
   display: -webkit-flex;
@@ -151,7 +151,7 @@ header {
 .image-area {
   text-align: center; }
   .image-area .loading_gif {
-    background: url("../assets/images/ajax-loader.gif") no-repeat center center;
+    background: url("../../assets/images/ajax-loader.gif") no-repeat center center;
     background-size: cover;
     height: 50px;
     width: 50px;
@@ -184,7 +184,7 @@ header {
         width: 100%;
         border-bottom: 1px solid #dbdbdb;
         min-height: 165px;
-        background: url("../assets/images/ajax-loader.gif") no-repeat center center;
+        background: url("../../assets/images/ajax-loader.gif") no-repeat center center;
         background-size: 50px; }
       .image-area .image-list li .pic_footer {
         display: -webkit-flex;
