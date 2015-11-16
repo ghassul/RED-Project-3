@@ -46,7 +46,7 @@ header {
 // Align center and add background
 .searchSection {
   text-align: center;
-  background: url(../assets/images/pattern.png) no-repeat center center;
+  background: url(../../assets/images/pattern.png) no-repeat center center;
   background-size: cover;
   padding: 3.5% 0;
   display: flex;
@@ -104,7 +104,7 @@ header {
 
   // Create loading gif in empty div
   .loading_gif {
-    background: url("../assets/images/ajax-loader.gif") no-repeat center center;
+    background: url("../../assets/images/ajax-loader.gif") no-repeat center center;
     background-size: cover;
     height: 50px;
     width: 50px;
@@ -146,7 +146,7 @@ header {
         width: 100%;
         border-bottom: 1px solid $pictureBorder;
         min-height: 165px;
-        background: url("../assets/images/ajax-loader.gif") no-repeat center center;
+        background: url("../../assets/images/ajax-loader.gif") no-repeat center center;
         background-size: 50px;
       }
 
@@ -200,7 +200,7 @@ header {
 
           // Add custom link decoration
           .user_name:hover {
-            text-shadow: 0 0 1px blue;
+            text-shadow: 0 0 1px #2F585F;
           }
 
           // Font size, spacing
@@ -226,7 +226,7 @@ header {
 
 // Load more button styling
 .load_more {
-  background-color: red;
+  background-color: $buttonColor;
   color: white;
   border-color: $gridBorder;
   text-transform: uppercase;

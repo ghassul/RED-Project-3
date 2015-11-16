@@ -13,7 +13,3 @@
 node_modules/
 design_comps/
 .idea/
-js/main-compiled.js
-js/main-compiled.js.map
-js/utils/utils-compiled.js
-js/utils/utils-compiled.js.map
