@@ -1,72 +1,157 @@
-$(function () {
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
 
-    //Declare variables
-    var pagination_link = '';
-    var $imageList = $('<ul class="image-list"></ul>');
-    var i = 0;
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
 
-    $('.loading_gif').toggle(false); //Hide loading gif
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
 
-    //Populates image section, takes input of a URL
-    function imagePopulator(imgInput) {
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
 
-        $.ajax({
-            method: 'GET',
-            dataType: 'jsonp',
-            url: imgInput //Inputted URL
-        }).done(function (data) {
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 
-            pagination_link = data.pagination.next_url; //Grab pagination link for load more button
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 
-            $.each(data.data, function (key, value) {
-                i++; //Iterator for lightbox data
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 
-                //Declare image and username variables to make slightly more readable
-                var contentImage = value.images.standard_resolution.url;
-                var userName = value.user.username;
 
-                var listItems = ''; //Declare empty string
-                listItems += "<li><a href='" + contentImage + "' data-lightbox='image-" + i + "'><img src=\'"; // <li><a (lightbox data)><img>
-                listItems += contentImage + "\' class='content_image'></a>"; // (ImageURL)</a>
-                listItems += "<div class='pic_footer'>"; // <div (picFooter)>
-                listItems += "<img src=\'" + value.user.profile_picture + "\' class='profile_picture'>"; // <img (ProfilePicURL)/>
-                listItems += "<div class='pic_info'>"; // <div (picInfo)>
-                listItems += "<a href='https://instagram.com/" + userName + "' class='user_name'>" + userName + "</a>"; // <a (link to user)> userName </a>
-                listItems += "<div class='comment_likes'>"; // <div (commentLikes)>
-                listItems += "<span class='comments'><i class='fa fa-comments'></i>" + value.comments.count + "</span>"; // <span><i (comments icon)></i> (# of comments) </span>
-                listItems += "<span><i class='fa fa-heart'></i>" + value.likes.count + "</span>"; // <span><i (likes icon)></i> (# of likes) </span>
-                listItems += "</div></div></div></li>"; // </div (commentLikes)></div (picInfo)></div (picFooter)></li>
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
 
-                $imageList.append(listItems); // Append all above HTML to global .image-list variable
-            });
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
 
-            $('.imageListWrapper').append($imageList); // Append .image-list (<ul>) to page
-            $('.loading_gif').toggle(false); // Hide loading gif
-            $('.load_more_btn').append("<button type=submit class='load_more'>Load more</button>"); // Create load more button
-        });
-    }
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "js/";
 
-    // Search bar/button
-    $('.instagram-searcher').on('submit', function (event) {
-        event.preventDefault();
-        $('.imageListWrapper').empty(); // Delete all searched content
-        $('.load_more_btn').empty(); // Remove load more button
-        $('.loading_gif').toggle(true); // Show loading gif
-        $imageList.empty(); // Clear <ul> variable
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
 
-        var formInput = $('input').val(); // Grab search bar input
-        var searchInput = "https://api.instagram.com/v1/tags/" + formInput // Construct API url
-         + "/media/recent?count=12&client_id=e7c23d1d42974762a329e5dfc09ff86f";
+	'use strict';
 
-        imagePopulator(searchInput); // Run imagePopulator function passing in searched value
-    });
+	var _utils = __webpack_require__(1);
 
-    // Load more button
-    $('.load_more_btn').on('click', function (event) {
-        event.preventDefault();
-        $('.load_more_btn').empty(); // Remove load more button
-        $('.loading_gif').toggle(true); // Show loading gif
+	var _utils2 = _interopRequireDefault(_utils);
 
-        imagePopulator(pagination_link); // Run imagePopulator function passing in pagination link
-    });
-});
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	$(function () {
+
+	    var $loadMore = $('.load_more_btn'),
+	        $loadingGif = $('.loading_gif');
+
+	    $loadingGif.toggle(false); //Hide loading gif
+
+	    // Search bar/button
+	    $('.instagram-searcher').on('submit', function (event) {
+	        event.preventDefault();
+
+	        var formInput = $('input').val(),
+	            // Grab search bar input
+	        searchInput = "https://api.instagram.com/v1/tags/" + formInput // Construct API url
+	         + "/media/recent?count=12&client_id=e7c23d1d42974762a329e5dfc09ff86f";
+
+	        $('.imageListWrapper').empty(); // Delete all searched content
+	        $loadMore.empty(); // Remove load more button
+	        $loadingGif.toggle(true); // Show loading gif
+	        _utils2.default.clearImageList(); // Clear <ul> variable
+
+	        _utils2.default.populateImages(searchInput); // Run imagePopulator function passing in searched value
+	    });
+
+	    // Load more button
+	    $loadMore.on('click', function (event) {
+	        event.preventDefault();
+
+	        $loadMore.empty(); // Remove load more button
+	        $loadingGif.toggle(true); // Show loading gif
+
+	        _utils2.default.populateImages(_utils2.default.paginationLink); // Run imagePopulator function passing in pagination link
+	    });
+	});
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	//Populates image section, takes input of a URL
+
+	var ImagePopulator = (function () {
+	    function ImagePopulator() {
+	        _classCallCheck(this, ImagePopulator);
+
+	        this.paginationLink = '';
+	        this.$imageList = $('<ul class="image-list"></ul>');
+	    }
+
+	    _createClass(ImagePopulator, [{
+	        key: 'clearImageList',
+	        value: function clearImageList() {
+	            this.$imageList.empty();
+	        }
+	    }, {
+	        key: 'populateImages',
+	        value: function populateImages(imgInput) {
+	            var _this = this;
+
+	            var i = 0;
+
+	            $.ajax({
+	                method: 'GET',
+	                dataType: 'jsonp',
+	                url: imgInput //Inputted URL
+	            }).done(function (data) {
+
+	                _this.paginationLink = data.pagination.next_url; //Grab pagination link for load more button
+
+	                $.each(data.data, function (key, value) {
+	                    i++; //Iterator for lightbox data
+
+	                    //Declare image and username variables to make slightly more readable
+	                    var contentImage = value.images.standard_resolution.url,
+	                        userName = value.user.username,
+	                        profilePicture = value.user.profile_picture,
+	                        commentCount = value.comments.count,
+	                        likesCount = value.likes.count,
+	                        listItems = '\n                        <li>\n                            <a href=\'' + contentImage + '\' data-lightbox=\'image-' + i + '\'>\n                                <img src=\'' + contentImage + '\' class=\'content_image\'>\n                            </a>\n                            <div class=\'pic_footer\'>\n                                <img src=\'' + profilePicture + '\' class=\'profile_picture\'>\n                                <div class=\'pic_info\'>\n                                    <a href=\'https://instagram.com/' + userName + '\' class=\'user_name\'>' + userName + '</a>\n                                    <div class=\'comment_likes\'>\n                                        <span class=\'comments\'><i class=\'fa fa-comments\'></i>' + commentCount + '</span>\n                                        <span><i class=\'fa fa-heart\'></i>' + likesCount + '</span>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>';
+
+	                    _this.$imageList.append(listItems); // Append all above HTML to global .image-list variable
+	                });
+
+	                $('.imageListWrapper').append(_this.$imageList); // Append .image-list (<ul>) to page
+	                $('.loading_gif').toggle(false); // Hide loading gif
+	                $('.load_more_btn').append("<button type=submit class='load_more'>Load more</button>"); // Create load more button
+	            });
+	        }
+	    }]);
+
+	    return ImagePopulator;
+	})();
+
+	module.exports = new ImagePopulator();
+
+/***/ }
+/******/ ]);
