@@ -101,7 +101,7 @@ header {
 
 .searchSection {
   text-align: center;
-  background: url(../assets/images/pattern.png) no-repeat center center;
+  background: url(../../assets/images/pattern.png) no-repeat center center;
   background-size: cover;
   padding: 3.5% 0;
   display: -webkit-flex;
@@ -156,7 +156,7 @@ button {
   text-align: center; }
 
 .loading_gif {
-  background: url("../assets/images/ajax-loader.gif") no-repeat center center;
+  background: url("../../assets/images/ajax-loader.gif") no-repeat center center;
   background-size: cover;
   height: 50px;
   width: 50px;
@@ -192,7 +192,7 @@ li {
   width: 100%;
   border-bottom: 1px solid #dbdbdb;
   min-height: 165px;
-  background: url("../assets/images/ajax-loader.gif") no-repeat center center;
+  background: url("../../assets/images/ajax-loader.gif") no-repeat center center;
   background-size: 50px; }
 
 .pic_footer {
